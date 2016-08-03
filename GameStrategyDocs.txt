@@ -1,0 +1,149 @@
+
+Documentation 
+
+Test-harness "gameComparison.harness.twogame.OldGameAgainstNewGame.java"
+
+	-- Run this test, and it plays the two games against each other 3000 times. 
+
+10 x 10 grid, first to 5-in-a-row wins. 
+
+Game strategy: 
+
+Highest Ranking Rule:  If you have 4 in a row, "cap" the 4, making a 5,  winning the game. (Same applies to 5 with gap.)
+ 
+  EXAMPLE: When board looks like this, with 4 of our marks ("XX") in a row (or vertically, or along either diagonal axis):
+ 
+*****************************
+00 XX __ __ __ __ __ 7  8  9  
+__ XX __ __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+__ OO XX XX XX XX 46 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+__ __ __ __ __ __ 76 77 78 79 
+__ __ OO OO OO __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+
+We choose position 46 (instead of several other potential moves), to win immediately with 5 in a row:
+
+*****************************
+__ __ __ __ __ __ __ 7  8  9  
+__ __ __ __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+__ OO XX XX XX XX XX 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+__ __ __ __ __ __ 76 77 78 79 
+__ __ __ __ __ __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+
+ 
+Second Highest Ranking Rule: if opponent has 4 in a row, "block" that 4 (Same applies to 4 with gap.)
+  EXAMPLE: When board looks like this, with 4 opponent marks ("OO") in a row (or vertically, or along either diagonal axis):
+ 
+*****************************
+__ __ __ __ __ __ __ 7  8  9  
+__ OO OO __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+00 OO OO OO 44 45 46 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+XX XX XX __ __ __ 76 77 78 79 
+__ __ __ __ __ __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+
+We choose position 44 (not either of the other potential moves), to block opponent's potential winning series:
+
+*****************************
+__ __ __ __ __ __ __ 7  8  9  
+__ OO OO __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+00 OO OO OO XX 45 46 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+XX XX XX __ __ __ 76 77 78 79 
+__ __ __ __ __ __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+ 
+ 
+ Third Highest Ranking Rule: If opponent has 3 in a row, "block" that 3,.
+ 
+  Example:When board looks like this, with 3 opponent marks ("OO") in a row (or vertically, or a long either diagonal axis):
+ 
+*****************************
+__ __ XX XX __ __ __ 7  8  9  
+__ __ __ __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+00 OO OO 43 44 45 46 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+__ __ __ __ __ __ 76 77 78 79 
+__ __ __ __ __ __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+
+We choose position 43, to block opponent's potential winning series:
+  
+*****************************
+__ __ XX XX __ __ __ 7  8  9  
+__ __ __ __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+00 OO OO XX 44 45 46 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+__ __ __ __ __ __ 76 77 78 79 
+__ __ __ __ __ __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+ 
+ 
+ Fourth Highest Ranking Rule: If we have 3 in a row, "cap" that 3, making a 4 (Same applies to 3 with gap). 
+ 
+  Example:When board looks like this, with 3 of our marks ("XX") in a row (or vertically, or a long either diagonal axis):
+ 
+*****************************
+__ __ XX XX __ __ __ 7  8  9  
+__ __ __ __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+__ XX XX XX 44 45 46 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+__ __ __ __ __ __ 76 77 78 79 
+__ __ __ __ __ __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+
+We choose position 44, to cap our winning series, making a series of 4 that is open-ended, and therefore guaranteed to win:
+  
+*****************************
+__ __ XX XX __ __ __ 7  8  9  
+__ __ __ __ __ __ __ 17 18 19 
+__ __ __ __ __ __ __ 27 28 29 
+__ __ __ __ __ __ __ 37 38 39 
+__ XX XX XX XX 45 46 47 48 49 
+__ __ __ __ __ __ 56 57 58 59 
+__ __ __ __ __ __ 66 67 68 69 
+__ __ __ __ __ __ 76 77 78 79 
+__ __ __ __ __ __ 86 87 88 89 
+__ __ __ __ __ __ 96 97 98 99 
+*****************************
+ 
+ 
+ 
+ 
+ -- All other moves (2 in a row, etc) are lower-ranking moves. 
+ 
+ -- Be aware of opportunities to extend a series for you, while blocking opponent at same time. 
+ 
+ 
